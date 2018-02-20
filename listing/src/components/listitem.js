@@ -11,11 +11,12 @@ class ListItem extends Component {
   }
  
   render() {
-    const {name, description, last_boot} = this.props;
+    const {name, description, last_boot, id} = this.props;
     const lastBootDate = new Date(last_boot);
 
     return (
       <li>
+          <div className="id">{id}</div>
           <div className="name">{name}</div>
           <div className="description">{description}</div>
           <div className="lastBoot">
