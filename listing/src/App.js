@@ -27,10 +27,10 @@ class App extends Component {
     
     return (
       <div className="App">
+        <div className="row header">
+            <div className="title">SUSE Frontend Challange</div>
+        </div>
         <div className="container">
-          <div className="row header">
-              <div className="title">SUSE Frontend Challange</div>
-          </div>
           <div className="row">
               <Filter />
               <Listing sys={systems}/>
