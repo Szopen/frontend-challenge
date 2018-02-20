@@ -11,6 +11,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-css": "less-watch-compiler --run-once --main-file=main.less src/less/ public/assets/css/",
+    "watch-css": "npm run build-css && less-watch-compiler --main-file=main.less src/less/ public/assets/css/"
+  },
+  "devDependencies": {
+    "less-watch-compiler": "^1.11.0"
   }
 }
