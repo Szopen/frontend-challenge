@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ListItem from './components/listitem';
  
 class Listing extends Component {
   constructor(props){
@@ -13,7 +14,7 @@ class Listing extends Component {
       <div className="col-md-10">  
         <ul className="listing">
             {sys.map(function(item,index){
-                return <li key={index}>{item.description}</li>;
+                return <ListItem key={index} {...item}/>
             })}
         </ul>
       </div>
