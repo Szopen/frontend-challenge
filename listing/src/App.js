@@ -1,21 +1,44 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Filter from './filter';
+import Listing from './listing';
+import axios from 'axios';
+ 
 import './App.css';
-
+ 
+ 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      systems:[]
+    };
+  }
+  
+  componentDidMount(){
+    axios.get(`https://api.myjson.com/bins/17ii1l`)
+      .then(res => {
+        const systems = res.data[0].systems;
+        this.setState({ systems });
+      });
+  }
+ 
   render() {
+    const {systems} = this.state;
+    
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="container">
+          <div className="row header">
+              <div className="title">SUSE Frontend Challange</div>
+          </div>
+          <div className="row">
+              <Filter />
+              <Listing sys={systems}/>
+          </div>
+        </div>
       </div>
     );
   }
 }
-
+ 
 export default App;
