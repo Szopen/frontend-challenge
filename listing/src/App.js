@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Filter from './filter';
 import Listing from './listing';
 import axios from 'axios';
- 
+import Pagination from "react-js-pagination";
+
+
 import './App.css';
  
  
@@ -10,17 +12,19 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      systems:[]
+      systems:[],
+      activePage:1,
     };
 
 
     this.updateParents = this.updateParents.bind(this)
-
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
   
   componentDidMount(){
     //axios.get(`https://api.myjson.com/bins/17ii1l`)
     axios.get('https://raw.githubusercontent.com/SUSE/frontend-challenge/master/systems-long-list.json')
+    //axios.get('https://localhost.com/systems')
       .then(res => {
         const systems = res.data[0].systems;
         this.setState({ systems });
@@ -39,6 +43,11 @@ class App extends Component {
     this.setState({ ...this.state, systems: systems2 });
 
   }
+
+  handlePageChange(pageNumber) {
+    console.log(`active page is ${pageNumber}`);
+    this.setState({activePage: pageNumber});
+  }
  
   render() {
     const {systems} = this.state;
@@ -51,9 +60,16 @@ class App extends Component {
         <div className="container">
           <div className="row">
               <Filter onChange={this.updateParents}/>
-              <Listing sys={systems}/>
+              <Listing activePage={this.state.activePage} sys={systems}/>
           </div>
         </div>
+        <Pagination
+          activePage={this.state.activePage}
+          itemsCountPerPage={10}
+          totalItemsCount={450}
+          pageRangeDisplayed={5}
+          onChange={this.handlePageChange}
+        />
       </div>
     );
   }
