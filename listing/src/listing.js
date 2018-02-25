@@ -21,7 +21,7 @@ class Listing extends Component {
       <div className="col-md-10">  
         <ul className="listing">
             {sys.map(function(item,index){
-              if(index <= 20*page && index >= (20*page)-20){
+              if(index <= 10*page && index >= (10*page)-10){
                 return <ListItem key={index} {...item}/>
               }
             })}
