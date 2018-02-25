@@ -54,12 +54,12 @@ class App extends Component {
     
     return (
       <div className="App">
-        <div className="row header">
-            <div className="title">SUSE Frontend Challange</div>
+       <div className="row header">
+            <div className="container title">SUSE Frontend Challange</div>
         </div>
         <div className="container">
           <div className="row">
-              <Filter onChange={this.updateParents}/>
+              {/*<Filter onChange={this.updateParents}/>*/}
               <Listing activePage={this.state.activePage} sys={systems}/>
           </div>
         </div>

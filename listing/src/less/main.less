@@ -6,15 +6,17 @@
     //border:1px solid rgba(0, 0, 0, 0.342);
     //border-top:1px solid rgba(0, 0, 0, 0.342);
     li{
-        padding:10px;
-        min-height: 120px;
+        padding:10px 135px;
+        min-height: 95px;
         margin: 0 0 10px 0;
         font-size:10px;
         position: relative;
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.23);
-        background-color:#efefef;
+        background-color:#f9f9f7;
         border-radius: 10px;
-
+        &:hover{
+            box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.43);
+        }
         .name{
             font-size:12px;
             font-weight: bold;
@@ -28,12 +30,36 @@
 
         .seeMore{
             position: absolute;
-            right: 10px;
+            right: 0px;
             bottom:10px;
+            top:0;
+            height: 100%;
+            width: 120px;
+            text-align: center;
+            color:white !important;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            .suse();
+            line-height: 95px;
+
             cursor: pointer;
             &:hover{
                 text-decoration: underline;
             }
+        }
+        .icon{
+            position: absolute;
+            height: 100%;
+            width: 120px;
+            top:0;
+            left:0;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            .suse();
+            color:white;
+            line-height: 95px;
+            text-align: center;
+            font-size:35px;
         }
        
     }
@@ -42,14 +68,15 @@
 .header{
     text-align: center;
     border-bottom:1px solid;
-    background-color:#22D264;
+    //background-color:#22D264;
+    background-color:#2ecc71;
     margin-bottom:20px;
     color:white;
     .title{
-        margin:0 auto;
         font-size:16px;
         padding:20px;
         font-weight: bold;
+        text-align: left;;
         text-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.23);
 
     }
@@ -101,19 +128,20 @@
             font-size:13px;
         }
         .detailInfo{
-            background-color:#efefef;
+            background-color:#f9f9f7;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.23);
             border-radius: 10px;
             padding:20px;
         }
         .detailBadge{
-            .turquoise();
+            .suse();
             float:left;
             padding:5px;
             margin:5px;
             border-radius: 3px;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.23);
             font-weight: 700;
+            color:White;
 
         }
     }
@@ -131,7 +159,7 @@ body{
 }
 
 .systemWrapper{
-    .green-sea();
+    .suse();
     font-size:20px;
     padding:20px;
     color:White;
@@ -165,4 +193,29 @@ body{
 }
 .carrot{
     background-color:#E47E30;
+}
+.suse{
+    background-color:#2ecc71;
+}
+.pagination{
+    display:inline-block !important;;
+    margin:0 auto;
+    li{
+        font-size: 14px;
+        padding:10px;
+        width:40px;
+        height: 40px;;
+        margin:10px;
+        float:left;
+        a{
+            color:#2D3E4F;
+        }
+    }
+    .active{
+        border-radius: 100%;
+        background-color:#2ecc71;
+        a{
+            color:White;
+        }
+    }
 }

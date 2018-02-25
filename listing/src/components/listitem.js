@@ -3,7 +3,7 @@ import Moment from 'react-moment';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faTimes from '@fortawesome/fontawesome-free-solid/faTimes'
 import faPowerOff from '@fortawesome/fontawesome-free-solid/faPowerOff'
-
+import faDesktop from '@fortawesome/fontawesome-free-solid/faDesktop'
 import faCaretSquareRight from '@fortawesome/fontawesome-free-solid/faCaretSquareRight'
 import Axios from 'axios';
 import ListModalDetail from './listmodaldetail';
@@ -49,6 +49,7 @@ class ListItem extends Component {
 
     return (
       <li>
+          <div className="icon"><FontAwesomeIcon icon={faDesktop}/></div>
           <div className="name">{name}</div>
           <div className="id">{id}</div>
           <div className="description">{description}</div>

@@ -18,7 +18,7 @@ class Listing extends Component {
     const {sys} = this.props;  
     const {page} = this.state;
     return (
-      <div className="col-md-10">  
+      <div className="col-md-12">  
         <ul className="listing">
             {sys.map(function(item,index){
               if(index <= 10*page && index >= (10*page)-10){
