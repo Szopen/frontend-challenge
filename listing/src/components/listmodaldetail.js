@@ -21,13 +21,13 @@ class ListModalDetail extends Component {
 
     for(var i = 0; i< Object.keys(system).length;i++){
       let systemInfoKey = Object.keys(system)[i];
-      //console.log(systemInfoKey);
-      console.log(system[systemInfoKey]);
-      htmlMock.push(<div className="mainAttr row">
+      if(system[systemInfoKey] !== ""){
+      htmlMock.push(<div className="mainAttr row" key={i}>
                       <div className="detailTitle col-md-3">{systemInfoKey}</div>
                       <div className="detailInfo col-md-9">{this.isObject(system[systemInfoKey])?this.printNodes(system[systemInfoKey]):system[systemInfoKey]}</div>
                     </div>)
-      console.log("----");
+      }
+      
 
     }
     
@@ -36,7 +36,7 @@ class ListModalDetail extends Component {
   }
   
   isObject(obj) {
-    return obj === Object(obj);
+    return obj === Object(obj) || obj.constructor.name === "Array";
   }
 
   getRandomArbitrary(min, max) {
@@ -47,12 +47,13 @@ class ListModalDetail extends Component {
   printNodes(json){
     
     let htmlMock = [];
-    let colours = ['.turquoise', '.emerald','.green-sea','.alizarin', '.pomegranate', '.web-asphalt', '.midnight-blue', '.pumpkin', '.carrot'];
-    if(Array.isArray(json)){
-      for(var i=0; i<json.length;i++){        
-          htmlMock.push(<div className="detailBadge">{this.isObject(json[i]) ? this.printNodes(json[i]):json[i]}</div>)
+    let colours = ['turquoise', 'emerald','green-sea','alizarin', 'pomegranate', 'web-asphalt', 'midnight-blue', 'pumpkin', 'carrot'];
+    for(var i=0; i<json.length;i++){      
+      if(json[i] !== ""){
+        htmlMock.push(<div key={i} className={`detailBadge ${colours[Math.floor((Math.random() * colours.length-1) + 1)]}`}>{this.isObject(json[i]) ? this.printNodes(json[i]):json[i]}</div>)
       }
     }
+    
     return htmlMock;
   }
 

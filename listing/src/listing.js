@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ListItem from './components/listitem';
- 
+
+
 class Listing extends Component {
   constructor(props){
       super(props);
@@ -9,6 +10,9 @@ class Listing extends Component {
       }
         
   }
+  
+
+  
   componentWillReceiveProps(){
     const {activePage} = this.props;
     this.setState({page: activePage});

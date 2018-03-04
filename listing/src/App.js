@@ -36,7 +36,7 @@ class App extends Component {
     console.log(e.value);
     const {systems} = this.state;
     let systems2;
-    if(e.value=="Order by Last Boot"){
+    if(e.value === "Order by Last Boot"){
       systems2 = [].concat(systems).sort((a, b) => a.id > b.id);
     }
 
@@ -54,22 +54,25 @@ class App extends Component {
     
     return (
       <div className="App">
-       <div className="row header">
-            <div className="container title">SUSE Frontend Challange</div>
+       <div className="header">
+          <div className="row">
+            <div className="container title">SUSE Frontend Challenge</div>
+          </div>
         </div>
         <div className="container">
           <div className="row">
               {/*<Filter onChange={this.updateParents}/>*/}
               <Listing activePage={this.state.activePage} sys={systems}/>
           </div>
-        </div>
-        <Pagination
+          <div className="row">
+          <Pagination
           activePage={this.state.activePage}
           itemsCountPerPage={10}
           totalItemsCount={450}
           pageRangeDisplayed={5}
-          onChange={this.handlePageChange}
-        />
+          onChange={this.handlePageChange} />
+          </div>
+        </div>
       </div>
     );
   }
