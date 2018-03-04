@@ -13,7 +13,8 @@ class ListItem extends Component {
 
     this.state = {
       isModalOpen:false,
-      system: []
+      system: [],
+      systemHeader: 0,
     }
     this.openModal = this.openModal.bind(this);    
     this.closeModal = this.closeModal.bind(this);     
@@ -24,9 +25,9 @@ class ListItem extends Component {
       .then(res => {
           const systemDetail = []
           systemDetail.push(JSON.stringify(res.data.return));
-
+          
           //console.log(systemDetail);
-          this.setState({isModalOpen:true, system:systemDetail });
+          this.setState({isModalOpen:true, system:systemDetail, systemHeader:Object.keys(res.data.return[0])[0] });
       })
   }
 
@@ -40,7 +41,7 @@ class ListItem extends Component {
   render() {
     const {name, description, last_boot, id} = this.props;
     const lastBootDate = new Date(last_boot);
-    const {isModalOpen, system, hideEmpty} = this.state;
+    const {isModalOpen, system, hideEmpty, systemHeader} = this.state;
 
     return (
       <li>
@@ -60,7 +61,7 @@ class ListItem extends Component {
                 <div className={"close-modal"} onClick={(e) => this.closeModal(e)}>
                 X
                 </div>
-                <ListModalDetail sysDetail={system}/>
+                <ListModalDetail sysDetail={system} sysHeader={systemHeader}/>
             </div>
           </div>
           }

@@ -5,7 +5,8 @@ class ListModalDetail extends Component {
       super(props);
 
       this.state = {
-        detail:this.props.sysDetail
+        detail:this.props.sysDetail,
+        systemHeader:this.props.sysHeader
       };
 
       this.printJson = this.printJson.bind(this);
@@ -17,25 +18,27 @@ class ListModalDetail extends Component {
     let obj = JSON.parse(json);
     let objKey = Object.keys(obj[0]);
     let system = obj[0][objKey];
-    let htmlMock = [<div className="systemWrapper">{objKey}</div>];
-
+    let htmlMock = [];
+    let htmlHeader = [<div className="systemWrapper">{objKey}</div>];
+    
     for(var i = 0; i< Object.keys(system).length;i++){
       let systemInfoKey = Object.keys(system)[i];
-      if(system[systemInfoKey] !== ""){
-      htmlMock.push(<div className="mainAttr row" key={i}>
-                      <div className="detailTitle col-md-3">{systemInfoKey}</div>
-                      <div className="detailInfo col-md-9">{this.isObject(system[systemInfoKey])?this.printNodes(system[systemInfoKey]):system[systemInfoKey]}</div>
-                    </div>)
-      }
+      if(system[systemInfoKey] != "" && system[systemInfoKey].length > 0){
+        htmlMock.push(<div className="mainAttr row" key={i}>
+                        <div className="detailTitle col-md-3">{systemInfoKey}</div>
+                        <div className="detailInfo col-md-9">{this.isObject(system[systemInfoKey])?this.printNodes(system[systemInfoKey]):system[systemInfoKey]}</div>
+                      </div>)
+        }
       
 
     }
     
     
-    return htmlMock
+    return htmlMock;
   }
   
   isObject(obj) {
+    
     return obj === Object(obj) || obj.constructor.name === "Array";
   }
 
@@ -49,18 +52,23 @@ class ListModalDetail extends Component {
     let htmlMock = [];
     let colours = ['turquoise', 'emerald','green-sea','alizarin', 'pomegranate', 'web-asphalt', 'midnight-blue', 'pumpkin', 'carrot'];
     for(var i=0; i<json.length;i++){      
+      let randomColor = colours[Math.floor((Math.random() * colours.length-1) + 1)];
       if(json[i] !== ""){
-        htmlMock.push(<div key={i} className={`detailBadge ${colours[Math.floor((Math.random() * colours.length-1) + 1)]}`}>{this.isObject(json[i]) ? this.printNodes(json[i]):json[i]}</div>)
+        //console.log(json[i]);
+        htmlMock.push(<div key={i} className={`detailBadge ${randomColor}`}>{this.isObject(json[i]) ? this.printNodes(json[i]):json[i]}</div>)
       }
     }
     
-    return htmlMock;
+    return htmlMock;  
   }
 
   render() {
-    const {detail} = this.state;
+    const {detail,systemHeader} = this.state;
     return (
-      <div>{this.printJson(detail)}</div>
+      <div>
+        <div className="systemWrapper">{systemHeader}</div>
+        <div>{this.printJson(detail)}</div>
+      </div>
     );
   }
 }
