@@ -21,7 +21,7 @@ class ListItem extends Component {
   }
 
   openModal() {
-    Axios.get('../data/system-details.json')
+    Axios.get('http://localhost:8000/system-details.json')
       .then(res => {
           const systemDetail = []
           systemDetail.push(JSON.stringify(res.data.return));

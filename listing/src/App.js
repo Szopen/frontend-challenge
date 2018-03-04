@@ -23,8 +23,8 @@ class App extends Component {
   
   componentDidMount(){
     //axios.get(`https://api.myjson.com/bins/17ii1l`)
-    axios.get('https://raw.githubusercontent.com/SUSE/frontend-challenge/master/systems-long-list.json')
-    //axios.get('https://localhost.com/systems')
+    //axios.get('https://raw.githubusercontent.com/SUSE/frontend-challenge/master/systems-long-list.json')
+    axios.get('http://localhost:8000/systems-long-list.json')
       .then(res => {
         const systems = res.data[0].systems;
         this.setState({ systems });
